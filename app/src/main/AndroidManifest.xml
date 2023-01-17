@@ -13,10 +13,28 @@
         android:theme="@style/Theme.TermCourseScheduler"
         tools:targetApi="31">
         <activity
-            android:name=".userinterface.TermScheduler"
-            android:label="Term Scheduler"
-            android:parentActivityName=".userinterface.MainActivity"
+            android:name=".userinterface.CourseDetails"
+            android:label="Course Details"
+            android:parentActivityName=".userinterface.TermDetails"
             android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userinterface.TermDetails"
+            android:exported="false"
+            android:label="Term Details and Courses"
+            android:parentActivityName=".userinterface.TermScheduler">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userinterface.TermScheduler"
+            android:exported="false"
+            android:label="Term Scheduler"
+            android:parentActivityName=".userinterface.MainActivity">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
