@@ -8,20 +8,16 @@ import androidx.room.RoomDatabase;
 
 import com.gfofiu.c196project.dao.AssessmentsDAO;
 import com.gfofiu.c196project.dao.CourseDAO;
-import com.gfofiu.c196project.dao.NotesDAO;
 import com.gfofiu.c196project.dao.TermDAO;
 import com.gfofiu.c196project.entities.Assessments;
 import com.gfofiu.c196project.entities.Course;
-import com.gfofiu.c196project.entities.Notes;
 import com.gfofiu.c196project.entities.Term;
 
-@Database(entities = {Term.class, Course.class, Assessments.class, Notes.class}, version = 1, exportSchema = false)
+@Database(entities = {Term.class, Course.class, Assessments.class}, version = 4, exportSchema = false)
 public abstract class TermCourseBuilder extends RoomDatabase {
     public abstract TermDAO termDAO();
 
     public abstract CourseDAO courseDAO();
-
-    public abstract NotesDAO notesDAO();
 
     public abstract AssessmentsDAO assessmentsDAO();
 

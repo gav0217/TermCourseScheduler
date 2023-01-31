@@ -14,9 +14,18 @@
         tools:targetApi="31">
         <activity
             android:name=".userinterface.CourseDetails"
+            android:exported="false"
             android:label="Course Details"
-            android:parentActivityName=".userinterface.TermDetails"
-            android:exported="false">
+            android:parentActivityName=".userinterface.Courses">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".userinterface.Courses"
+            android:exported="false"
+            android:label="Courses"
+            android:parentActivityName=".userinterface.TermDetails">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -24,7 +33,7 @@
         <activity
             android:name=".userinterface.TermDetails"
             android:exported="false"
-            android:label="Term Details and Courses"
+            android:label="Term Details"
             android:parentActivityName=".userinterface.TermScheduler">
             <meta-data
                 android:name="android.app.lib_name"

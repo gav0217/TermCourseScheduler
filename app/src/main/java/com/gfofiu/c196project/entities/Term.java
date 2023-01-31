@@ -7,15 +7,15 @@ import androidx.room.PrimaryKey;
 public class Term {
     @PrimaryKey(autoGenerate = true)
     private int termID;
-    private String courseTitle;
-    private String courseStart;
-    private String courseEnd;
+    private String termTitle;
+    private String termStart;
+    private String termEnd;
 
-    public Term(int termID, String courseTitle, String courseStart, String courseEnd) {
+    public Term(int termID, String termTitle, String termStart, String termEnd) {
         this.termID = termID;
-        this.courseTitle = courseTitle;
-        this.courseStart = courseStart;
-        this.courseEnd = courseEnd;
+        this.termTitle = termTitle;
+        this.termStart = termStart;
+        this.termEnd = termEnd;
     }
 
     public Term() {
@@ -29,27 +29,27 @@ public class Term {
         this.termID = termID;
     }
 
-    public String getCourseTitle() {
-        return courseTitle;
+    public String getTermTitle() {
+        return termTitle;
     }
 
-    public void setCourseTitle(String courseTitle) {
-        this.courseTitle = courseTitle;
+    public void setTermTitle(String termTitle) {
+        this.termTitle = termTitle;
     }
 
-    public String getCourseStart() {
-        return courseStart;
+    public String getTermStart() {
+        return termStart;
     }
 
-    public void setCourseStart(String courseStart) {
-        this.courseStart = courseStart;
+    public void setTermStart(String termStart) {
+        this.termStart = termStart;
     }
 
-    public String getCourseEnd() {
-        return courseEnd;
+    public String getTermEnd() {
+        return termEnd;
     }
 
-    public void setCourseEnd(String courseEnd) {
-        this.courseEnd = courseEnd;
+    public void setTermEnd(String termEnd) {
+        this.termEnd = termEnd;
     }
 }

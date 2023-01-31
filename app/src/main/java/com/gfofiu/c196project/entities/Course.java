@@ -8,25 +8,21 @@ import androidx.room.PrimaryKey;
 public class Course {
     @PrimaryKey(autoGenerate = true)
     private int courseID;
-    private int termID;
+    private String termID;
     private String courseTitle;
     private String courseStart;
     private String courseEnd;
-    private boolean alert;
-    private int status;
     private String mentorsName;
     private String mentorsNumber;
     private String mentorsEmail;
 
-    public Course(int courseID, int termID, String courseTitle, String courseStart, String courseEnd,
-                  boolean alert, int status, String mentorsName, String mentorsNumber, String mentorsEmail) {
+    public Course(int courseID, String termID, String courseTitle, String courseStart, String courseEnd,
+                  String mentorsName, String mentorsNumber, String mentorsEmail) {
         this.courseID = courseID;
         this.termID = termID;
         this.courseTitle = courseTitle;
         this.courseStart = courseStart;
         this.courseEnd = courseEnd;
-        this.alert = alert;
-        this.status = status;
         this.mentorsName = mentorsName;
         this.mentorsNumber = mentorsNumber;
         this.mentorsEmail = mentorsEmail;
@@ -43,11 +39,11 @@ public class Course {
         this.courseID = courseID;
     }
 
-    public int getTermID() {
+    public String getTermID() {
         return termID;
     }
 
-    public void setTermID(int termID) {
+    public void setTermID(String termID) {
         this.termID = termID;
     }
 
@@ -73,22 +69,6 @@ public class Course {
 
     public void setCourseEnd(String courseEnd) {
         this.courseEnd = courseEnd;
-    }
-
-    public boolean isAlert() {
-        return alert;
-    }
-
-    public void setAlert(boolean alert) {
-        this.alert = alert;
-    }
-
-    public int getStatus() {
-        return status;
-    }
-
-    public void setStatus(int status) {
-        this.status = status;
     }
 
     public String getMentorsName() {

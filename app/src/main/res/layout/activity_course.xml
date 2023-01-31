@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".userinterface.TermScheduler">
+    tools:context=".userinterface.Courses">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+        android:id="@+id/coursefloatingActionButton"
         android:layout_width="57dp"
         android:layout_height="65dp"
         android:layout_marginEnd="30dp"
@@ -19,13 +19,13 @@
         app:srcCompat="@drawable/ic_baseline_add_task_24" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/termrecyclerview"
+        android:id="@+id/courserecyclerview"
         android:layout_width="409dp"
+        android:layout_marginLeft="20dp"
         android:layout_height="match_parent"
+        android:clickable="true"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

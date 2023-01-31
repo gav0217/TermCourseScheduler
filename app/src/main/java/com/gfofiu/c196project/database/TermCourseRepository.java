@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.gfofiu.c196project.dao.AssessmentsDAO;
 import com.gfofiu.c196project.dao.CourseDAO;
-import com.gfofiu.c196project.dao.NotesDAO;
 import com.gfofiu.c196project.dao.TermDAO;
 import com.gfofiu.c196project.entities.Course;
 import com.gfofiu.c196project.entities.Term;
@@ -14,14 +13,13 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class TermCourseRepository {
-    private TermDAO mTermDAO;
-    private CourseDAO mCourseDAO;
-    private AssessmentsDAO mCourseAssessmentsDAO;
-    private NotesDAO mCourseNotesDAO;
+    private final TermDAO mTermDAO;
+    private final CourseDAO mCourseDAO;
+    private final AssessmentsDAO mCourseAssessmentsDAO;
     private List<Term> mAllTerms;
     private List<Course> mAllCourse;
 
-    private static int NUMBER_OF_THREADS = 4;
+    private static final int NUMBER_OF_THREADS = 4;
     static final ExecutorService databaseExecutor = Executors.newFixedThreadPool(NUMBER_OF_THREADS);
 
     public TermCourseRepository(Application application) {
@@ -29,12 +27,11 @@ public class TermCourseRepository {
         mCourseDAO = db.courseDAO();
         mTermDAO = db.termDAO();
         mCourseAssessmentsDAO = db.assessmentsDAO();
-        mCourseNotesDAO = db.notesDAO();
     }
 
     public List<Term> getAllTerms() {
         databaseExecutor.execute(() -> {
-            mAllTerms = mTermDAO.getAllTerm();
+            mAllTerms = mTermDAO.getAllTerms();
         });
         try {
             Thread.sleep(1000);

@@ -7,12 +7,14 @@
     tools:context=".userinterface.TermDetails">
 
     <ScrollView
+        android:id="@+id/termdetailsscrollview"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="185dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
+            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -25,20 +27,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hi1 ">
+                    android:text="Term Name">
                 </TextView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/termname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hi2 ">
-                </TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Hi3">
-                </TextView>
+                    android:hint="Term Name">
+                </EditText>
 
             </LinearLayout>
 
@@ -50,36 +47,70 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Low1 ">
+                    android:text="Term Start">
                 </TextView>
 
-                <TextView
+                <EditText
+                    android:id="@+id/termstart"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Low2 ">
-                </TextView>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Low3">
-                </TextView>
+                    android:hint="01/01/2023">
+                </EditText>
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Term End">
+                </TextView>
+
+                <EditText
+                    android:id="@+id/termend"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="01/31/2023">
+                </EditText>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_marginLeft="10dp"
+                android:id="@+id/saveterm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save"/>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
 
         </LinearLayout>
 
     </ScrollView>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/floatingActionButton2"
-        android:layout_width="57dp"
-        android:layout_height="65dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="30dp"
-        android:clickable="true"
-        app:backgroundTint="#3F51B5"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/courserecyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="369dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/termdetailsscrollview" />
+
+    <Button
+        android:id="@+id/coursesbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Courses"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_baseline_add_task_24" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
