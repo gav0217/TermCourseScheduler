@@ -22,22 +22,23 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.CourseView
 
         private CourseViewHolder(View itemview) {
             super(itemview);
-            courseItemView = itemview.findViewById(R.id.courseItemtextView);
+            courseItemView = itemview.findViewById(R.id.courseItemTextView);
             itemview.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     final Course current = mCourse.get(position);
                     Intent intent = new Intent(context, CourseDetails.class);
-                    intent.putExtra("id", current.getCourseID());
+                    intent.putExtra("courseID", current.getCourseID());
                     intent.putExtra("course", current.getCourseTitle());
                     intent.putExtra("course start", current.getCourseStart());
                     intent.putExtra("course end", current.getCourseEnd());
                     intent.putExtra("mentor name", current.getMentorsName());
                     intent.putExtra("mentor phone", current.getMentorsNumber());
                     intent.putExtra("mentor email", current.getMentorsEmail());
-                    intent.putExtra("term", current.getTermID());
-                    //intent.putExtra("note", current.getNote);
+                    intent.putExtra("termID", current.getTermID());
+                    intent.putExtra("status", current.getStatus());
+                    intent.putExtra("note", current.getEditNote());
                     context.startActivity(intent);
                 }
             });

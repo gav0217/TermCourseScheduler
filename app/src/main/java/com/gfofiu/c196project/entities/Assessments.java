@@ -6,31 +6,30 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "assessments")
 public class Assessments {
     @PrimaryKey(autoGenerate = true)
-    private int assessmentId;
+    private int assessmentID;
     private int courseID;
     private String assessmentName;
-    private int type;
+    private String assessmentStart;
     private String assessmentDue;
-    private boolean alert;
 
-    public Assessments(int assessmentId, int courseID, String assessmentName, int type, String assessmentDue, boolean alert) {
-        this.assessmentId = assessmentId;
+
+    public Assessments(int assessmentID, int courseID, String assessmentName, String assessmentStart, String assessmentDue) {
+        this.assessmentID = assessmentID;
         this.courseID = courseID;
         this.assessmentName = assessmentName;
-        this.type = type;
+        this.assessmentStart = assessmentStart;
         this.assessmentDue = assessmentDue;
-        this.alert = alert;
     }
 
     public Assessments() {
     }
 
-    public int getAssessmentId() {
-        return assessmentId;
+    public int getAssessmentID() {
+        return assessmentID;
     }
 
-    public void setAssessmentId(int assessmentId) {
-        this.assessmentId = assessmentId;
+    public void setAssessmentID(int assessmentID) {
+        this.assessmentID = assessmentID;
     }
 
     public int getCourseID() {
@@ -49,13 +48,6 @@ public class Assessments {
         this.assessmentName = assessmentName;
     }
 
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
 
     public String getAssessmentDue() {
         return assessmentDue;
@@ -65,11 +57,13 @@ public class Assessments {
         this.assessmentDue = assessmentDue;
     }
 
-    public boolean isAlert() {
-        return alert;
+    public String getAssessmentStart() {
+        return assessmentStart;
     }
 
-    public void setAlert(boolean alert) {
-        this.alert = alert;
+    public void setAssessmentStart(String assessmentStart) {
+        this.assessmentStart = assessmentStart;
     }
+
 }
+

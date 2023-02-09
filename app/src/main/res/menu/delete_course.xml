@@ -3,6 +3,6 @@
 
     <item
         android:id="@+id/deletecourse"
-        android:title="Delete Course" />
+        android:title="Delete Term" />
 
 </menu>

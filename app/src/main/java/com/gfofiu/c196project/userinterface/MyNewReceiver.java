@@ -14,7 +14,7 @@ import androidx.core.app.NotificationCompat;
 
 import com.gfofiu.c196project.R;
 
-public class MyReceiver extends BroadcastReceiver {
+public class MyNewReceiver extends BroadcastReceiver {
     String channel_id = "test";
     static int notificationID;
 

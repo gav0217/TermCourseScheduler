@@ -9,10 +9,11 @@
     <ScrollView
         android:id="@+id/CourseScrollView2"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="300dp"
         android:layout_marginTop="4dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -183,30 +184,26 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Save"
-                    app:backgroundTint="#3F51B5"/>
+                    app:backgroundTint="#3F51B5" />
 
                 <Button
-                    android:layout_marginLeft="10dp"
                     android:id="@+id/assessments"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
                     android:text="Add Assessment"
-                    app:backgroundTint="#3F51B5"/>
+                    app:backgroundTint="#3F51B5" />
             </androidx.appcompat.widget.LinearLayoutCompat>
 
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/assessmentslist"
+                android:layout_width="300dp"
+                android:layout_height="225dp"
+                tools:layout_editor_absoluteX="512dp" />
 
         </LinearLayout>
 
     </ScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/assessmentslist"
-        android:layout_width="409dp"
-        android:layout_height="225dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CourseScrollView2"
-        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

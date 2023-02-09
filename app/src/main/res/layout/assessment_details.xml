@@ -4,19 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".userinterface.TermDetails">
+    tools:context=".userinterface.AssessmentDetails">
 
     <ScrollView
-        android:id="@+id/termdetailsscrollview"
+        android:id="@+id/assessmentScrollView"
         android:layout_width="match_parent"
         android:layout_height="185dp"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:layout_marginLeft="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -27,15 +27,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Term Name">
-                </TextView>
+                    android:text="Assessment Name" />
 
                 <EditText
-                    android:id="@+id/termname"
+                    android:id="@+id/assessmentNameDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="Term Name">
-                </EditText>
+                    android:hint="Assessment Name" />
 
             </LinearLayout>
 
@@ -47,15 +45,13 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Term Start">
-                </TextView>
+                    android:text="Assessment Start" />
 
                 <EditText
-                    android:id="@+id/termstart"
+                    android:id="@+id/assessmentStartDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="01/01/2023">
-                </EditText>
+                    android:hint="01/01/2023" />
 
             </LinearLayout>
 
@@ -67,30 +63,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Term End">
-                </TextView>
+                    android:text="Assessment End" />
 
                 <EditText
-                    android:id="@+id/termend"
+                    android:id="@+id/assessmentEndDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:hint="01/31/2023">
-                </EditText>
-
+                    android:hint="01/31/2023" />
             </LinearLayout>
+
 
             <androidx.appcompat.widget.LinearLayoutCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:layout_marginLeft="10dp"
-                android:id="@+id/saveterm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Save"
-                app:backgroundTint="#3F51B5"/>
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/saveAssessment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="Save"
+                    app:backgroundTint="#3F51B5" />
 
             </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -98,22 +92,4 @@
 
     </ScrollView>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/courserecyclerview"
-        android:layout_marginLeft="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/termdetailsscrollview" />
-
-    <Button
-        android:id="@+id/coursesbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Courses"
-        app:backgroundTint="#3F51B5"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

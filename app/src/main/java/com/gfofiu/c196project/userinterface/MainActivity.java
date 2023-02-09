@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity {
                 Term Term = new Term (0, "Winter Term", "01/01/2023", "01/31/2023");
                 TermCourseRepository termCourseRepository = new TermCourseRepository(getApplication());
                 termCourseRepository.insert(Term);
-                Course course = new Course(0, "Fall", "Computer Science", "01/01/2023", "01/31/2023",
-                        "Gavril Fofiu", "442-600-9686", "gav217@wgu.edu");
+                Course course = new Course(0, 1, "Computer Science", "01/01/2023", "01/31/2023",
+                        "Gavril Fofiu", "442-600-9686", "gav217@wgu.edu", "In Process", "Sample Note");
                 termCourseRepository.insert(course);
                 return true;
         }

@@ -31,16 +31,15 @@ import java.util.Locale;
 public class TermDetails extends AppCompatActivity {
 
     EditText editTerm;
-    EditText editTermStart;
-    EditText editTermEnd;
     EditText editDate;
     EditText editDateB;
     DatePickerDialog.OnDateSetListener startDate;
     DatePickerDialog.OnDateSetListener endDate;
     final Calendar myCalendarStart = Calendar.getInstance();
-    int id;
+
+    int termID;
     int numCourse;
-    Course currentCourse;
+    Term currentTerm;
     String termTitle;
     String termStart;
     String termEnd;
@@ -55,13 +54,18 @@ public class TermDetails extends AppCompatActivity {
         String myFormat = "MM/dd/yy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         editDate = findViewById(R.id.termstart);
-        editDate.setText(sdf.format(new Date()));
         editDateB = findViewById(R.id.termend);
-        editDateB.setText(sdf.format(new Date()));
-        id = getIntent().getIntExtra("id", -1);
+        termID = getIntent().getIntExtra("termID", -1);
         termTitle = getIntent().getStringExtra("term");
         termStart = getIntent().getStringExtra("term start");
         termEnd = getIntent().getStringExtra("term end");
+        if(termID==-1) {
+            editDate.setText(sdf.format(new Date()));
+            editDateB.setText(sdf.format(new Date()));
+        }else {
+            editDate.setText(termStart);
+            editDateB.setText(termEnd);
+        }
         editTerm.setText(termTitle);
         termCourseRepository = new TermCourseRepository(getApplication());
         RecyclerView recyclerView = findViewById(R.id.courserecyclerview);
@@ -71,20 +75,20 @@ public class TermDetails extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Course> filteredCourse = new ArrayList<>();
         for (Course p : termCourseRepository.getAllCourse()) {
-            if (p.getCourseID() == id) filteredCourse.add(p);
+            if (p.getTermID() == termID) filteredCourse.add(p);
         }
-        courseAdopter.setCourse(termCourseRepository.getAllCourse());
+        courseAdopter.setCourse(filteredCourse);
         Button button = findViewById(R.id.saveterm);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (id == -1) {
-                    term = new Term(0, editTerm.getText().toString(), editTermStart.getText().toString(), editTermEnd.getText().toString());
+                if (termID == -1) {
+                    term = new Term(0, editTerm.getText().toString(), editDate.getText().toString(), editDateB.getText().toString());
                     termCourseRepository.insert(term);
                     Intent intent = new Intent(TermDetails.this, TermScheduler.class);
                     startActivity(intent);
                 } else {
-                    term = new Term(id, editTerm.getText().toString(), editTermStart.getText().toString(), editTermEnd.getText().toString());
+                    term = new Term(termID, editTerm.getText().toString(), editDate.getText().toString(), editDateB.getText().toString());
                     termCourseRepository.update(term);
                     Intent intent = new Intent(TermDetails.this, TermScheduler.class);
                     startActivity(intent);
@@ -97,7 +101,7 @@ public class TermDetails extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TermDetails.this, CourseDetails.class);
-                intent.putExtra("term ID", id);
+                intent.putExtra("termID", termID);
                 startActivity(intent);
             }
         });
@@ -136,7 +140,7 @@ public class TermDetails extends AppCompatActivity {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                new DatePickerDialog(TermDetails.this, startDate, myCalendarStart
+                new DatePickerDialog(TermDetails.this, endDate, myCalendarStart
                         .get(Calendar.YEAR), myCalendarStart.get(Calendar.MONTH),
                         myCalendarStart.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -171,7 +175,7 @@ public class TermDetails extends AppCompatActivity {
                 myCalendarStart.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
 
-                updateLabelStart();
+                updateLabelEnd();
             }
         };
     }
@@ -181,6 +185,12 @@ public class TermDetails extends AppCompatActivity {
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         editDate.setText(sdf.format(myCalendarStart.getTime()));
+    }
+
+    private void updateLabelEnd() {
+        String myFormat = "MM/dd/yy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
         editDateB.setText(sdf.format(myCalendarStart.getTime()));
     }
 
@@ -194,12 +204,13 @@ public class TermDetails extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         List<Course> filteredCourse = new ArrayList<>();
         for (Course p : termCourseRepository.getAllCourse()) {
-            if (p.getCourseID() == id) filteredCourse.add(p);
+            if (p.getTermID() == termID) filteredCourse.add(p);
         }
         courseAdapter.setCourse(filteredCourse);
 
         //Toast.makeText(ProductDetails.this,"refresh list",Toast.LENGTH_LONG).show();
     }
+
 
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.delete_course, menu);
@@ -209,18 +220,19 @@ public class TermDetails extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.deletecourse:
-                for (Course cour : termCourseRepository.getAllCourse()) {
-                    if (cour.getCourseID() == id) currentCourse = cour;
+                for (Term ter : termCourseRepository.getAllTerms()) {
+                    if (ter.getTermID() == termID) currentTerm = ter;
                 }
 
                 numCourse = 0;
                 for (Course course : termCourseRepository.getAllCourse()) {
-                    if (course.getCourseID() == id) ++numCourse;
+                    if (course.getTermID() == termID) ++numCourse;
                 }
 
                 if (numCourse == 0) {
-                    termCourseRepository.delete(currentCourse);
-                    Toast.makeText(TermDetails.this, currentCourse.getCourseID() + " was deleted", Toast.LENGTH_LONG).show();
+                    termCourseRepository.delete(currentTerm);
+                    Toast.makeText(TermDetails.this, currentTerm.getTermTitle() + " was deleted", Toast.LENGTH_LONG).show();
+                    finish();
                 } else {
                     Toast.makeText(TermDetails.this, "Can't delete a Term with Courses", Toast.LENGTH_LONG).show();
                 }

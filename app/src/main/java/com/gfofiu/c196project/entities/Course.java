@@ -8,16 +8,20 @@ import androidx.room.PrimaryKey;
 public class Course {
     @PrimaryKey(autoGenerate = true)
     private int courseID;
-    private String termID;
+    private int termID;
     private String courseTitle;
     private String courseStart;
     private String courseEnd;
     private String mentorsName;
     private String mentorsNumber;
     private String mentorsEmail;
+    private String status;
+    private String editNote;
 
-    public Course(int courseID, String termID, String courseTitle, String courseStart, String courseEnd,
-                  String mentorsName, String mentorsNumber, String mentorsEmail) {
+
+
+    public Course(int courseID, int termID, String courseTitle, String courseStart, String courseEnd,
+                  String mentorsName, String mentorsNumber, String mentorsEmail, String status, String editNote) {
         this.courseID = courseID;
         this.termID = termID;
         this.courseTitle = courseTitle;
@@ -26,6 +30,8 @@ public class Course {
         this.mentorsName = mentorsName;
         this.mentorsNumber = mentorsNumber;
         this.mentorsEmail = mentorsEmail;
+        this.status = status;
+        this.editNote = editNote;
     }
 
     public Course() {
@@ -39,11 +45,11 @@ public class Course {
         this.courseID = courseID;
     }
 
-    public String getTermID() {
+    public int getTermID() {
         return termID;
     }
 
-    public void setTermID(String termID) {
+    public void setTermID(int termID) {
         this.termID = termID;
     }
 
@@ -93,5 +99,21 @@ public class Course {
 
     public void setMentorsEmail(String mentorsEmail) {
         this.mentorsEmail = mentorsEmail;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getEditNote() {
+        return editNote;
+    }
+
+    public void setEditNote(String editNote) {
+        this.editNote = editNote;
     }
 }

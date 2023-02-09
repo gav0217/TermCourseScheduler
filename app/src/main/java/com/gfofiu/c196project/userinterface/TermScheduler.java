@@ -32,9 +32,9 @@ public class TermScheduler extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         termCourseRepository = new TermCourseRepository(getApplication());
         List<Term> allTerms = termCourseRepository.getAllTerms();
-        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        Button button = findViewById(R.id.termAddButton);
         termAdapter.setTerms(allTerms);
-        fab.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(TermScheduler.this, TermDetails.class);

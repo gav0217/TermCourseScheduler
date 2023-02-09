@@ -13,7 +13,7 @@ import com.gfofiu.c196project.entities.Assessments;
 import com.gfofiu.c196project.entities.Course;
 import com.gfofiu.c196project.entities.Term;
 
-@Database(entities = {Term.class, Course.class, Assessments.class}, version = 4, exportSchema = false)
+@Database(entities = {Term.class, Course.class, Assessments.class}, version = 19, exportSchema = false)
 public abstract class TermCourseBuilder extends RoomDatabase {
     public abstract TermDAO termDAO();
 
